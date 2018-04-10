@@ -3,15 +3,16 @@
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a routerLink="home">Главная</a></li>
-      <li *ngIf="authService.isAuth"><a>Путешествия</a></li>
-      <li *ngIf="authService.isAuth"><a>Клубы</a></li>
-      <li *ngIf="authService.isAuth"><a>Активности</a></li>
-      <li *ngIf="authService.isAuth"><a>Сообщения</a></li>
+      <li *ngIf="this.auth"><a>Путешествия</a></li>
+      <li *ngIf="this.auth"><a>Клубы</a></li>
+      <li *ngIf="this.auth"><a>Активности</a></li>
+      <li *ngIf="this.auth"><a>Сообщения</a></li>
+      <li *ngIf="this.auth"><a routerLink="/user">Профиль</a></li>
     </ul>
 
-    <a *ngIf="!authService.isAuth" class="waves-effect waves-light btn" (click)="onClick()">Войти</a>
-    <a *ngIf="!authService.isAuth" class="waves-effect waves-light btn" (click)="onRegistr()">Регистрация</a>
-    <a *ngIf="authService.isAuth" class="waves-effect waves-light btn" (click)="onLogOut()">Выйти</a>
+    <a *ngIf="!this.auth" class="waves-effect waves-light btn" (click)="onClick()">Войти</a>
+    <a *ngIf="!this.auth" class="waves-effect waves-light btn" (click)="onRegistr()">Регистрация</a>
+    <a *ngIf="this.auth" class="waves-effect waves-light btn" (click)="onLogOut()">Выйти</a>
   </div>
 </nav>
 
