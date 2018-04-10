@@ -9,8 +9,9 @@
       <li *ngIf="authService.isAuth"><a>Сообщения</a></li>
     </ul>
 
-    <a *ngIf="!authService.isAuth" class="waves-effect waves-light btn" (click)="onClick()">SingIn</a>
-    <a *ngIf="authService.isAuth" class="waves-effect waves-light btn" (click)="onLogOut()">LogOut</a>
+    <a *ngIf="!authService.isAuth" class="waves-effect waves-light btn" (click)="onClick()">Войти</a>
+    <a *ngIf="!authService.isAuth" class="waves-effect waves-light btn" (click)="onRegistr()">Регистрация</a>
+    <a *ngIf="authService.isAuth" class="waves-effect waves-light btn" (click)="onLogOut()">Выйти</a>
   </div>
 </nav>
 

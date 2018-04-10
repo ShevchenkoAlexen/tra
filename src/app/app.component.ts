@@ -24,6 +24,12 @@ export class AppComponent {
     console.log(this.router);
     this.router.navigate(['/login']);
   }
+
+  onRegistr(){
+    let isNewUser = 1;
+    this.router.navigate(['/login',isNewUser]);
+  }
+
   isAuthM(){
     this.isAuth = this.authService.isAuth();
   }
