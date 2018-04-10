@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import {Router} from "@angular/router";
 import {AuthService} from "./core/auth.service";
 import {Subscription} from "rxjs/Subscription";
-import {User} from "./users/user";
 import {UserDataService} from "./users/user-data.service";
+import {User} from "./users/user";
 
 
 
@@ -14,11 +14,10 @@ import {UserDataService} from "./users/user-data.service";
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent {
-  title = 'Tra';
   auth: any;
   user: User;
   subscription: Subscription;
-  subscriptionUser: Subscription;
+  subUser: Subscription;
 
   constructor(private router: Router,   public authService: AuthService, public userService: UserDataService){
     this.subscription = this.authService.getMessage().subscribe(masseg => {
@@ -31,9 +30,10 @@ export class AppComponent {
         this.logout()
       }
     });
-    this.subscriptionUser = this.userService.getMessage().subscribe( masseg => {
-      console.log('userService.getMessage');
-      console.log(masseg);
+    this.subUser = this.userService.getMessage().subscribe( masseg => {
+
+      this.user = masseg;
+      console.log(this.user);
     })
 
   }
@@ -41,7 +41,9 @@ export class AppComponent {
   }
 
   login(){
-    this.userService.getUser();
+    console.log(this.auth);
+    this.userService.getUser(this.auth);
+
   }
 
   logout(){

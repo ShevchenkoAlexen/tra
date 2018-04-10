@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import {AppRoutingModule} from "./app-routing/app-routing.module";
 import {AngularFireDatabaseModule} from "angularfire2/database";
 import {UserDataService} from "./users/user-data.service";
+import {AngularFirestore} from "angularfire2/firestore";
 
 
 @NgModule({
@@ -34,7 +35,7 @@ import {UserDataService} from "./users/user-data.service";
 
 
   ],
-  providers:[AuthService, UserDataService],
+  providers:[AuthService, UserDataService, AngularFirestore],
 
   bootstrap: [AppComponent]
 })
