@@ -8,15 +8,15 @@
       <li *ngIf="this.auth"><a>Активности</a></li>
       <li *ngIf="this.auth"><a>Сообщения</a></li>
       <li *ngIf="this.auth"><a routerLink="/user">Профиль</a></li>
+      <li *ngIf="!this.auth"><a class="waves-effect waves-light btn" (click)="onClick()">Войти</a></li>
+      <li *ngIf="!this.auth"><a class="waves-effect waves-light btn" (click)="onRegistr()">Регистрация</a></li>
+      <li *ngIf="this.auth"><a class="waves-effect waves-light btn" (click)="onLogOut()">Выйти</a></li>
     </ul>
 
-    <a *ngIf="!this.auth" class="waves-effect waves-light btn" (click)="onClick()">Войти</a>
-    <a *ngIf="!this.auth" class="waves-effect waves-light btn" (click)="onRegistr()">Регистрация</a>
-    <a *ngIf="this.auth" class="waves-effect waves-light btn" (click)="onLogOut()">Выйти</a>
   </div>
 </nav>
 
-<div class="row"  style="min-height: 800px">
+<div class="row" style="min-height: 800px">
   <router-outlet></router-outlet>
 </div>
 <footer class="page-footer">
@@ -43,5 +43,5 @@
   </div>
 </footer>
 <!--<div class="container">-->
-  <!--->
+<!--->
 <!--</div>-->

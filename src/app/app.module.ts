@@ -16,7 +16,6 @@ import {UserDataService} from './users/user-data.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {TravelsModule} from './travels/travels.module';
 
-
 @NgModule({
   declarations: [
     AppComponent,
