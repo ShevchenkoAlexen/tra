@@ -1,5 +1,5 @@
 export class User {
-  key:string;
+  key: string;
   first_name: string;
   last_name: string;
   email: String;
@@ -8,16 +8,20 @@ export class User {
   emailVerified: String;
   displayName: String;
 
-  constructor(obj){
+  constructor(obj) {
     this.key = [obj.key].join();
-    this.first_name= [obj.first_name].join();
-    this.last_name= [obj.last_name].join();
-    this.email= [obj.email].join();
-    if (obj.photoURL) {this.photo_url= obj.photo_url;}
-    else {this.photo_url='https://yt3.ggpht.com/-B7nW_2Q8vjo/AAAAAAAAAAI/AAAAAAAAAAA/lPKbmQlYz8U/s240-c-k-no-mo-rj-c0xffffff/photo.jpg'}
+    this.first_name = [obj.first_name].join();
+    this.last_name = [obj.last_name].join();
+    this.email = [obj.email].join();
+    if (obj.photoURL) {
+      this.photo_url = obj.photo_url;
+    } else {
+      this.photo_url = 'https://zabavnik.club/wp-content/uploads/2018/02/kartinki_krutye_na_avatarku_16_01062324.jpg';
+    }
 
-    this.phoneNumber= [obj.phoneNumber].join();
-    this.emailVerified= [obj.emailVerified].join();
-    this.displayName= [obj.displayName].join();
+
+    this.phoneNumber = [obj.phoneNumber].join();
+    this.emailVerified = [obj.emailVerified].join();
+    this.displayName = [obj.displayName].join();
   }
 }

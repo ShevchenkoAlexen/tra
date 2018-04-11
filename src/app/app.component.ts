@@ -1,9 +1,9 @@
-import { Component } from '@angular/core';
-import {Router} from "@angular/router";
-import {AuthService} from "./core/auth.service";
-import {Subscription} from "rxjs/Subscription";
-import {UserDataService} from "./users/user-data.service";
-import {User} from "./users/user";
+import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Router} from '@angular/router';
+import {AuthService} from './core/auth.service';
+import {Subscription} from 'rxjs/Subscription';
+import {UserDataService} from './users/user-data.service';
+import {User} from './users/user';
 
 
 
@@ -13,58 +13,56 @@ import {User} from "./users/user";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit, OnDestroy {
   auth: any;
   user: User;
   subscription: Subscription;
   subUser: Subscription;
 
-  constructor(private router: Router,   public authService: AuthService, public userService: UserDataService){
+  constructor(private router: Router,   public authService: AuthService, public userService: UserDataService) {
     this.subscription = this.authService.getMessage().subscribe(masseg => {
-      console.log(masseg);
       this.auth = masseg.auth;
-      if (this.auth){
+      if (this.auth) {
         this.login();
-      } else
-      {
-        this.logout()
+      } else {
+        this.logout();
       }
     });
     this.subUser = this.userService.getMessage().subscribe( masseg => {
 
       this.user = masseg;
       console.log(this.user);
-    })
+    });
 
   }
   ngOnInit() {
   }
 
-  login(){
+  login() {
     console.log(this.auth);
     this.userService.getUser(this.auth);
 
   }
 
-  logout(){
+  logout() {
     this.router.navigate(['/']);
   }
 
 
-  onClick(){
+  onClick() {
     this.router.navigate(['/login']);
   }
 
-  onRegistr(){
-    let isNewUser = 1;
-    this.router.navigate(['/login',isNewUser]);
+  onRegistr() {
+    const isNewUser = 1;
+    this.router.navigate(['/login', isNewUser]);
   }
 
-  isAuth(){
-    if (this.auth) return true;
+  isAuth() {
+    if (this.auth) { return true; }
     return false;
   }
-  onLogOut(){
+  onLogOut() {
     this.authService.signOut();
   }
 
