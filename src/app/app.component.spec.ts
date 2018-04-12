@@ -3,26 +3,51 @@ import { AppComponent } from './app.component';
 import {RouterModule} from '@angular/router';
 import {BrowserModule} from '@angular/platform-browser';
 import {HomePageComponent} from './home-page/home-page.component';
+import {AuthService} from "./core/auth.service";
+import {AngularFirestore} from "angularfire2/firestore";
+import {UserDataService} from "./users/user-data.service";
+import {APP_BASE_HREF} from "@angular/common";
+import {UserLoginComponent} from "./users/user-login/user-login.component";
+import {UserProfileComponent} from "./users/user-profile/user-profile.component";
+import {AngularFireAuth, AngularFireAuthModule} from "angularfire2/auth";
+import {TravelsModule} from "./travels/travels.module";
+import {environment} from "../environments/environment";
+import {AngularFireModule} from "angularfire2";
+import {AngularFireDatabaseModule} from "angularfire2/database";
+import {AppRoutingModule} from "./app-routing/app-routing.module";
+import {FormsModule} from "@angular/forms";
 
-describe('AppComponent', () => {
+xdescribe('AppComponent', () => {
   beforeEach(async(() => {
-    const routes = [
-      {path: '', component: HomePageComponent},
-      // {path: 'setup', component: SetupPageComponent}
-    ];
+
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
-        HomePageComponent
+        HomePageComponent,
+        UserLoginComponent,
+        UserProfileComponent
+
       ],  imports: [
-         BrowserModule,
-         RouterModule.forRoot(routes)
-      ]
+        FormsModule,
+        BrowserModule,
+        AngularFireModule.initializeApp(environment.firebase, 'Tra'),
+        AngularFireAuthModule,
+        AppRoutingModule,
+        AngularFireDatabaseModule,
+        TravelsModule
+      ],
+      providers: [AuthService,
+        UserDataService,
+        AngularFireAuth,
+        AngularFirestore,
+        { provide: APP_BASE_HREF, useValue: '/' } ]
     }).compileComponents();
   }));
   it('should create the app', async(() => {
     const fixture = TestBed.createComponent(AppComponent);
+    console.log(fixture);
     const app = fixture.debugElement.componentInstance;
+    console.log(app);
     expect(app).toBeTruthy();
   }));
   it(`should have as title 'Tra'`, async(() => {

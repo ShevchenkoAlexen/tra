@@ -1,6 +1,6 @@
 import { AppPage } from './app.po';
 
-describe('tra App', () => {
+xdescribe('tra App', () => {
   let page: AppPage;
 
   beforeEach(() => {

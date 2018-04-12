@@ -7,14 +7,15 @@ import { UserProfileComponent } from './users/user-profile/user-profile.componen
 import {AuthService} from './core/auth.service';
 import { AngularFireModule } from 'angularfire2';
 import { environment } from '../environments/environment';
-import {AngularFireAuthModule} from 'angularfire2/auth';
-
+import {AngularFireAuth, AngularFireAuthModule} from 'angularfire2/auth';
 import {FormsModule} from '@angular/forms';
 import {AppRoutingModule} from './app-routing/app-routing.module';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {UserDataService} from './users/user-data.service';
 import {AngularFirestore} from 'angularfire2/firestore';
 import {TravelsModule} from './travels/travels.module';
+import {APP_BASE_HREF} from "@angular/common";
+
 
 @NgModule({
   declarations: [
@@ -35,7 +36,11 @@ import {TravelsModule} from './travels/travels.module';
 
 
   ],
-  providers: [AuthService, UserDataService, AngularFirestore],
+  providers: [AuthService,
+    UserDataService,
+    AngularFirestore,
+    AngularFireAuth,
+    { provide: APP_BASE_HREF, useValue: '/' } ],
 
   bootstrap: [AppComponent]
 })

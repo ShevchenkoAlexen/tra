@@ -6,14 +6,13 @@ import {UserDataService} from './users/user-data.service';
 import {User} from './users/user';
 
 
-
-
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  title = 'Tra';
   auth: any;
   user: User;
   subscription: Subscription;
