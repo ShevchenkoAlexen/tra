@@ -3,7 +3,7 @@
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a routerLink="home">Главная</a></li>
-      <li *ngIf="this.auth" routerLink="travels"><a>Путешествия</a></li>
+      <li *ngIf="this.auth" routerLink="travels/0"><a>Путешествия</a></li>
       <li *ngIf="this.auth"><a>Клубы</a></li>
       <li *ngIf="this.auth"><a>Активности</a></li>
       <li *ngIf="this.auth"><a>Сообщения</a></li>
@@ -42,6 +42,4 @@
     </div>
   </div>
 </footer>
-<!--<div class="container">-->
-<!--->
-<!--</div>-->
+
