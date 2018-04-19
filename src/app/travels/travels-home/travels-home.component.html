@@ -1,0 +1,52 @@
+<div class="container" style="margin: 40px">
+
+  <div class="col s12 m9" *ngIf="!addTravel">
+    <a class="waves-effect waves-light btn" (click)="addNewTravel()"><i class="material-icons right">add</i>Новое
+      путешестивие</a>
+
+    <div class="collection">
+      <app-travel-item *ngFor="let t of memberListObj"
+                       [member]="t"
+      ></app-travel-item>
+    </div>
+  </div>
+
+
+  <div *ngIf="addTravel" class="row">
+    <form (ngSubmit)="onSubmit()">
+      <div class="col s12 m9">
+        <div class="row">
+          <h1>
+            <div class="input-field col s6">
+              <input value="{{trName}}" id="trName" type="text" class="validate" name="trName"
+                     [(ngModel)]="trName">
+              <label class="active" for="trName">Название</label>
+            </div>
+          </h1>
+        </div>
+        <div class="row">
+          <div class="input-field col s6">
+            <input value="{{trPlace}}" id="place" type="text" name="trPlace" [(ngModel)]="trPlace">
+            <label class="active" for="place">Район</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <form class="col s6">
+            <div class="row">
+              <div class="input-field col s12">
+                <textarea id="{{trDesc}}" id="description"class="materialize-textarea" type="text" name="trDesc"
+                          [(ngModel)]="trDesc"></textarea>
+                <label class="active" for="description">description</label>
+              </div>
+            </div>
+          </form>
+        </div>
+        <button class="btn waves-effect waves-light" type="submit" name="action">Сохранить
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+  </div>
+
+</div>

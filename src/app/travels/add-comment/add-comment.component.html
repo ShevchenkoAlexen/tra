@@ -1,0 +1,15 @@
+<div class="row">
+  <form class="col s12">
+    <div class="row">
+      <label for="icon_prefix2">Добавить комментарий</label>
+      <div class="input-field col s12">
+        <textarea id="icon_prefix2"
+                  class="materialize-textarea"
+                  name="commentText"
+                  [value]="this.commentObj.comment"
+                  [(ngModel)] = "this.commentObj.comment" ></textarea>
+      </div>
+      <a class="waves-effect waves-light btn right" (click)="onClick()">Отправить</a>
+    </div>
+  </form>
+</div>

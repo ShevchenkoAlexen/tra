@@ -1,0 +1,81 @@
+<div *ngIf="!this.user ">
+  Авторизируйтесь!
+</div>
+<div *ngIf="!this.travel ">
+  Не загружен проект
+</div>
+
+
+<div class="row" *ngIf="this.user && this.travel">
+  <h1>{{this.travel.name}}</h1>
+  <div class="col s12 m2">
+    <app-travel-menu [travel]="travel"></app-travel-menu>
+  </div>
+
+  <div class="col s12 m7">
+    <div class="item col s12" *ngIf="!updateName">
+      <h4 class="main_grow">{{task.getTaskName()}}</h4>
+      <div class="icon">
+        <i class="small material-icons" (click)="updateNameB()">create</i>
+      </div>
+
+    </div>
+    <form class="col s12" *ngIf="updateName">
+      <div class="row">
+        <div class="input-field col s10">
+        <textarea class="materialize-textarea"
+                  name="taskDescription"
+                  [value]="task.task.taskName"
+                  [(ngModel)] = "task.task.taskName" ></textarea>
+        </div>
+        <a class="waves-effect waves-light btn right" (click)="onClickName()">Отправить</a>
+      </div>
+    </form>
+    <div class="s12">
+      <div class="s12">
+        <p>Описание задачи</p>
+      </div>
+      <div class="item col s12" *ngIf="!updateDesc">
+        <div class="main_grow">
+          {{task.task.description}}
+        </div>
+        <div class="icon">
+          <i class="small material-icons" (click)="updateDescription()">create</i>
+        </div>
+      </div>
+      <form class="col s12" *ngIf="updateDesc">
+        <div class="row">
+          <div class="input-field col s12">
+        <textarea id="icon_prefix2"
+                  class="materialize-textarea"
+                  name="taskDescription"
+                  [value]="task.task.description"
+                  [(ngModel)] = "task.task.description" ></textarea>
+          </div>
+          <a class="waves-effect waves-light btn right" (click)="onClickDescription()">Отправить</a>
+        </div>
+      </form>
+    </div>
+    <div class="radio">
+      <input type="radio" id="option-4" checked
+             name="query.author"
+             value="all">
+      <label class="radio_label" for="option-4">Комментарии</label>
+    </div>
+    <div *ngIf="this.memberList && user && commentArray"  class="col s12 m12">
+      <div *ngFor="let t of commentArray">
+        <app-comment-item [comment]="t"
+                          [memberList]="this.memberList"
+                          [user]="user"
+                          (updateCommentE)="updateComment($event)"></app-comment-item>
+      </div>
+    </div>
+    <div *ngIf="user">
+      <app-add-comment [commentObj]="commentObj" [user] = "user" (addCommentE)="addComment($event)"></app-add-comment>
+    </div>
+  </div>
+  <div class="col s12 m2" *ngIf="task && user && memberList ">
+    <app-task-menu [user] = "user" [task] = "task" [memberList]="memberList"  (updateTaskE)="updateTask($event)"></app-task-menu>
+  </div>
+
+</div>
