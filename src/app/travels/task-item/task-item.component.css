@@ -1,0 +1,8 @@
+.task_item{
+  display: block;
+  line-height: 1.5rem;
+  padding: 10px 20px;
+  margin: 0;
+  border-bottom: 1px solid rgb(224, 224, 224) ;
+
+}

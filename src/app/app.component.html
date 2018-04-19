@@ -3,21 +3,43 @@
   <div class="nav-wrapper">
     <ul id="nav-mobile" class="left hide-on-med-and-down">
       <li><a routerLink="home">Главная</a></li>
-      <li *ngIf="authService.isAuth"><a>Путешествия</a></li>
-      <li *ngIf="authService.isAuth"><a>Клубы</a></li>
-      <li *ngIf="authService.isAuth"><a>Активности</a></li>
-      <li *ngIf="authService.isAuth"><a>Сообщения</a></li>
+      <li *ngIf="this.auth" routerLink="travels/0"><a>Путешествия</a></li>
+      <li *ngIf="this.auth"><a>Клубы</a></li>
+      <li *ngIf="this.auth"><a>Активности</a></li>
+      <li *ngIf="this.auth"><a>Сообщения</a></li>
+      <li *ngIf="this.auth"><a routerLink="/user">Профиль</a></li>
+      <li *ngIf="!this.auth"><a class="waves-effect waves-light btn" (click)="onClick()">Войти</a></li>
+      <li *ngIf="!this.auth"><a class="waves-effect waves-light btn" (click)="onRegistr()">Регистрация</a></li>
+      <li *ngIf="this.auth"><a class="waves-effect waves-light btn" (click)="onLogOut()">Выйти</a></li>
     </ul>
 
-    <a *ngIf="!authService.isAuth" class="waves-effect waves-light btn" (click)="onClick()">SingIn</a>
-    <a *ngIf="authService.isAuth" class="waves-effect waves-light btn" (click)="onLogOut()">LogOut</a>
   </div>
 </nav>
 
-<div class="container">
+<div class="row" style="min-height: 800px">
   <router-outlet></router-outlet>
 </div>
+<footer class="page-footer">
+  <div class="container">
+    <div class="row">
+      <div class="col l6 s12">
+        <h5 class="white-text">Footer Content</h5>
+        <p class="grey-text text-lighten-4">You can use rows and columns here to organize your footer content.</p>
+      </div>
+      <div class="col l4 offset-l2 s12">
+        <h5 class="white-text">Links</h5>
+        <ul>
+          <li><a class="grey-text text-lighten-3" href="#!">Link 1</a></li>
 
-<!--<div class="container">-->
-  <!--->
-<!--</div>-->
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="footer-copyright">
+    <div class="container">
+      © 2018 Курсовой проект
+      <a class="grey-text text-lighten-4 right" href="#!">More Links</a>
+    </div>
+  </div>
+</footer>
+

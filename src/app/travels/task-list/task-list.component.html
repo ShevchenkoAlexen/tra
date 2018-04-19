@@ -1,0 +1,111 @@
+<div>
+  <div *ngIf="addView" class="row">
+    <h4>Создать задачу</h4>
+
+    <form (ngSubmit)="createTask()" class="col s12 m8">
+      <div class="row">
+        <div class="col s2"><p>Название задачи:</p></div>
+        <div class="input-field z-depth-1 col s8">
+          <input value="{{taskName}}" id="place" type="text" name="taskName" [(ngModel)]="taskName">
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s2"><p>Описание:</p></div>
+        <div class="input-field z-depth-1 col s8">
+          <textarea value="{{taskDescription}}" id="textarea1" class="materialize-textarea" name="taskDescription"
+                    [(ngModel)]="taskDescription"></textarea>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col s2"><p>Исполнитель:</p></div>
+        <div class="input-field col s8">
+          <select style="display: block" class="col s6" name="assigneeId" [(ngModel)]="assigneeId">
+            <option *ngFor="let t of memberList" value="{{t.key}}">{{t.displayName}}</option>
+          </select>
+        </div>
+      </div>
+      <div class=" row">
+        <div class="col s2"><p>Приоритет:</p></div>
+        <div class="input-field col s8">
+          <select style="display: block" class="col s6" name="priority" [(ngModel)]="priority">
+            <option value="1" >Высокий</option>
+            <option value="2" >Средний</option>
+            <option value="3" >Низкий</option>
+          </select>
+        </div>
+      </div>
+      <div class="col row">
+        <button class="btn waves-effect waves-light" type="submit" name="action">Сохранить
+          <i class="material-icons right">send</i>
+        </button>
+      </div>
+    </form>
+  </div>
+
+
+  <div *ngIf="!addView" class="row">
+    <nav class="col s12 m10">
+      <div class="nav-wrapper">
+        <form class="input-field col" >
+          <div class="radio">
+            <input type="radio" id="option-4" checked
+                   name="query.author"
+                   value ="all"
+                   [(ngModel)]="query.author"
+                   (change)="changeView()">
+            <label class="radio_label" for="option-4">Все</label>
+            <input type="radio" id="option-5"
+                   name="query.author"
+                   value ="user"
+                   [(ngModel)]="query.author"
+                   (change)="changeView()">
+            <label class="radio_label" for="option-5">Я автор</label>
+            <input type="radio" id="option-6"
+                   name="query.author"
+                   value ="member"
+                   [(ngModel)]="query.author"
+                   (change)="changeView()">
+            <label class="radio_label" for="option-6">Я исполнитель</label>
+          </div>
+        </form>
+        <form class="input-field col">
+          <div class="radio">
+            <input type="radio" id="option-one"
+                   name="query.status"
+                   value ="all"
+                   checked
+                   [(ngModel)]="query.status"
+                   (change)="changeView()">
+            <label class="radio_label" for="option-one">Все</label>
+            <input type="radio" id="option-two"
+                   name="query.status"
+                   value ="open"
+                   [(ngModel)]="query.status"
+                   (change)="changeView()">
+            <label class="radio_label" for="option-two" >Активные</label>
+            <input type="radio" id="option-three"
+                   name="query.status"
+                   value ="close"
+                   [(ngModel)]="query.status"
+                   (change)="changeView()">
+            <label class="radio_label" for="option-three">Закрытые</label>
+          </div>
+        </form>
+        <ul class="right hide-on-med-and-down">
+          <li><a (click)="addTaskView()">Создать задачу</a></li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="col s12 m10">
+      <div class="collection">
+        <div *ngFor="let t of taskArray">
+           <app-task-item [task] = "t" [memberList] = "this.memberList" [user] = "user"></app-task-item>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

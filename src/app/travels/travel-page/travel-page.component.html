@@ -1,0 +1,61 @@
+
+  <div *ngIf="!this.user ">
+  Авторизируйтесь!
+  </div>
+  <div *ngIf="!this.travel ">
+    Не загружен проект
+  </div>
+
+
+  <div class="row" *ngIf="this.user && this.travel">
+    <h1>{{this.travel.name}}</h1>
+    <div class="col s12 m2">
+      <app-travel-menu [travel]="travel"></app-travel-menu>
+    </div>
+
+    <div class="col s12 m10">
+      <div *ngIf="this.view === 0">
+        <form (ngSubmit)="onSubmit()">
+          <div class="col s12 m9">
+            <div class="row">
+              <h1>
+                <div class="input-field col s12">
+                  <input value="{{travel.name}}" id="trName" type="text" class="validate" name="travel.name"
+                         [(ngModel)]="travel.name">
+                  <label class="active" for="trName">Название</label>
+                </div>
+              </h1>
+            </div>
+            <div class="row">
+              <div class="input-field col s12">
+                <input value="{{travel.place}}" id="place" type="text" name="this.travel.place" [(ngModel)]="travel.place">
+                <label class="active" for="place">Район</label>
+              </div>
+            </div>
+
+            <div class="row">
+              <form class="col s12">
+                <div class="row">
+                  <div class="input-field col s12">
+                <textarea id="{{travel.desc}}" id="description"class="materialize-textarea" type="text" name="travel.desc"
+                          [(ngModel)]="travel.desc"></textarea>
+                    <label class="active"  for="description">Описание</label>
+                  </div>
+                </div>
+              </form>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Сохранить
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+      <div *ngIf="this.view === 1">
+        <app-travel-user-list [memberList]="memberList" [travel]="travel"></app-travel-user-list>
+      </div>
+      <div *ngIf="this.view === 2">
+        <app-task-list [memberList]="memberList" [travel]="travel" [user]="user"></app-task-list>
+      </div>
+    </div>
+
+  </div>

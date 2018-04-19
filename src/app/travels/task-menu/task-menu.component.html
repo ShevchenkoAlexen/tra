@@ -1,0 +1,41 @@
+<div>
+  <form (change)="onChenge()" class="col s12 m10">
+    <div>
+      <div ><p>Автор:</p></div>
+      <div class="input-field">
+        <select style="display: block"  name="createdBy" [(ngModel)]="task.task.createdBy">
+          <option *ngFor="let t of memberList" value="{{t.key}}">{{t.displayName}}</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <div ><p>Исполнитель:</p></div>
+      <div class="input-field">
+        <select style="display: block"  name="assigneeId" [(ngModel)]="task.task.assigneeId">
+          <option *ngFor="let t of memberList" value="{{t.key}}">{{t.displayName}}</option>
+        </select>
+      </div>
+    </div>
+    <div>
+
+      <div><p>Приоритет:</p></div>
+      <div class="input-field">
+        <select style="display: block"  name="priority" [(ngModel)]="task.task.priority">
+          <option value="1">Высокий</option>
+          <option value="2">Средний</option>
+          <option value="3">Низкий</option>
+        </select>
+      </div>
+    </div>
+    <div>
+      <div><p>Статус:</p></div>
+      <div class="input-field">
+        <select style="display: block"  name="status" [(ngModel)]="task.task.status">
+          <option value="1">Открыта</option>
+          <option value="2">Закрыта</option>
+        </select>
+      </div>
+    </div>
+
+  </form>
+</div>

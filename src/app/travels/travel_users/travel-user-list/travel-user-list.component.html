@@ -1,0 +1,6 @@
+<app-search-user-field [travel]="travel"></app-search-user-field>
+<div>
+  <app-travel-user *ngFor="let u of memberList "
+                   [member] = "u"
+  ></app-travel-user>
+</div>

@@ -1,0 +1,21 @@
+<div class="s12" *ngIf="!this.update">
+  <div class="inline col s12">
+    <div class="main_grow">
+      <b>{{this.createdBy}}</b>
+    </div>
+    <div>
+      {{comment.getCreatedDateStr()}}
+    </div>
+  </div>
+  <div class="item col s12">
+    <div class="main_grow">
+      {{comment.getCommentText()}}
+    </div>
+    <div class="icon">
+      <i class="small material-icons" (click)="onClick()">create</i>
+    </div>
+  </div>
+</div>
+<div *ngIf="this.update">
+  <app-add-comment [commentObj]="this.comment.comment" [user]="user" (addCommentE)="updateComment($event)"></app-add-comment>
+</div>

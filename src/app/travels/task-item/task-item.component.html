@@ -1,0 +1,22 @@
+<div class="task_item" (click)="onClick()">
+  <div class="row">
+    <div class="col s4">
+      {{this.task.getTaskName()}}
+    </div>
+    <div class="col s2">
+      {{this.createdName}}
+    </div>
+    <div class="col s2">
+      {{this.assigneeName}}
+    </div>
+    <div class="col s1">
+      {{this.task.getTaskStatus()}}
+    </div>
+    <div class="col s1">
+      {{this.task.getTaskPriority()}}
+    </div>
+    <div class="col s2">
+      {{this.task.getCreatedDateStr()}}
+    </div>
+  </div>
+</div>

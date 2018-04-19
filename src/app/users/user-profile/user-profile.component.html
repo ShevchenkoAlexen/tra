@@ -1,0 +1,49 @@
+<div class="container">
+
+
+  <div class="col s12 m9" *ngIf="user" >
+    <h2 class="header">Профиль</h2>
+    <div class="card horizontal">
+      <div class="card-image">
+        <img src="{{this.user.photo_url}}">
+      </div>
+      <div class="card-stacked">
+        <form (ngSubmit)="onSubmit()">
+          <div class="card-content">
+            <div class="row">
+              <div class="input-field col s9">
+                <input value="{{this.user.first_name}}" id="first_name" type="text" class="validate"
+                       name="this.user.first_name" [(ngModel)]="this.user.first_name">
+                <label class="active" for="first_name">Имя</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s9">
+                <input value="{{this.user.last_name}}" id="last_name" type="text" class="validate"
+                       name="this.user.last_name" [(ngModel)]="this.user.last_name">
+                <label class="active" for="last_name">Фамилия</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s9">
+                <input value="{{this.user.displayName}}" id="nick_name" type="text" class="validate"
+                       name="this.user.displayName" [(ngModel)]="this.user.displayName">
+                <label class="active" for="nick_name">Ник</label>
+              </div>
+            </div>
+            <div class="row">
+              <div class="input-field col s9">
+                <input value="{{this.user.email}}" id="email" type="text" class="validate" name="this.user.email"
+                       [(ngModel)]="this.user.email">
+                <label class="active" for="email">Email</label>
+              </div>
+            </div>
+            <button class="btn waves-effect waves-light" type="submit" name="action">Сохранить
+              <i class="material-icons right">send</i>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
