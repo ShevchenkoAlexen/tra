@@ -50,11 +50,11 @@ export class Task {
         break;
       }
       case 'open': {
-        answerQ = (1 === this.task.status);
+        answerQ = (1 === +this.task.status);
         break;
       }
       case 'close': {
-        answerQ = (2 === this.task.status);
+        answerQ = (2 === +this.task.status);
         break;
       }
       default: {
@@ -71,7 +71,7 @@ export class Task {
   }
 
   getTaskStatus() {
-    switch (this.task.status) {
+    switch (+this.task.status) {
       case 1:
         return 'Открыта';
       case 2:
